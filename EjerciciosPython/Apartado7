@@ -1,0 +1,55 @@
+""" 7 - La conjetura de Collatz dice que 
+Sea la siguiente operación, aplicable a cualquier número entero positivo: 
+• Si el número es par, se divide entre 2. 
+• Si el número es impar, se multiplica por 3 y se suma 1.
+Siempre se va a llegar al número 1
+Del 1 al 100 comprueba que se cumple. Guarda en una lista de listas el “recorrido” para cada
+número del uno al 100. Muestra que número tiene el “recorrido” más largo. Optimiza el 
+algoritmo de manera que si durante el cálculo del camino llegas a un paso que está calculado
+(por ejemplo, llegas al 24, pero la lista de todos los pasos para el 24 ya la tienes guardada), 
+no recalcules, sino simplemente añade la lista ya calculada al resultado. """
+
+def conjetura_Collatz():
+    recorrido = {}  # Diccionario para almacenar los recorridos ya calculados
+    
+    for i in range(1, 101):
+        num = i
+        pasos = []
+        
+        while num != 1:
+            if num in recorrido:
+                pasos.extend(recorrido[num][:-1])
+                break
+                
+            pasos.append(num)
+            
+            if num % 2 == 0:
+                num //= 2
+            else:
+                num = num * 3 + 1
+        
+        pasos.append(1)
+        recorrido[i] = pasos
+
+    return recorrido
+
+
+# Se llama a la función y mostrar los resultados
+resultados = conjetura_Collatz()
+for numero, pasos in resultados.items():
+    print(f"Recorrido de {numero}: {pasos}")
+    
+# Se busca el recorrido más largo
+max_recorrido = 0
+numero_max_recorrido = None
+
+for numero, pasos in resultados.items():
+    longitud = len(pasos)
+    if longitud > max_recorrido:
+        max_recorrido = longitud
+        numero_max_recorrido = numero
+print("")        
+print(f"Número con el recorrido más largo: {numero_max_recorrido} con longitud {max_recorrido}")
+print("")
+print(f"Recorrido: {resultados[numero_max_recorrido]}")
+

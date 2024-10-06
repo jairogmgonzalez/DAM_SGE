@@ -1,0 +1,36 @@
+""" 4 - Funcion de binario (pasamos una cadena de texto con 1 y 0, y convertimos la cadena en
+lista) a decimal y de decimal a binario. """
+
+def binario_decimal(binario):
+    # Se convierte cada dígito del string 'binario' en un entero y lo guarda en una lista
+    binario_lista = [int(digito) for digito in binario]
+    
+    decimal = 0  # Se inicializa la variable que almacenará el valor decimal
+    
+    # Recorre la lista desde el último elemento hacia el primero
+    for i, digito in enumerate(reversed(binario_lista)):
+        # Suma el valor decimal correspondiente del dígito actual
+        decimal += digito * (2**i)
+    
+    return decimal 
+
+def decimal_binario(decimal):
+    binario = []  # Se inicializa una lista para almacenar los dígitos binarios
+    
+    while decimal != 0:
+        # Añade el resto de la división por 2 (dígito binario) a la lista
+        binario.append(decimal % 2)
+        # Se actualiza el decimal dividiéndolo por 2
+        decimal = int(decimal / 2)
+        
+    # Invierte la lista 'binario' para colocar los bits en el orden correcto
+    binario.reverse()
+    
+    # Convierte cada elemento de la lista 'binario' a string
+    # Une los strings resultantes en una sola cadena sin separaciones
+    return ''.join(map(str, binario)) 
+
+decimal = 13
+binario = decimal_binario(decimal)
+
+print(binario)  # Salida: 1101

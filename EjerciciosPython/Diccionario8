@@ -1,0 +1,52 @@
+"""8. Escribir un programa que cree un diccionario de traducción español-inglés. Con las 
+siguientes opciones
+1. Añadir palabras al diccionario. El usuario introducirá las palabras en español e inglés 
+separadas por dos puntos, y cada par `<palabra>:<traducción>` separados por comas. El 
+programa debe crear un diccionario con las palabras y sus traducciones. 
+2. Traducir. Se pedirá una frase en español y utilizará el diccionario para traducirla palabra 
+a palabra. Si una palabra no está en el diccionario debe dejarla sin traducir.
+Puede ser útil el método split"""
+
+def gestionar_diccionario():
+    diccionario = {}  # Diccionario para almacenar las traducciones
+
+    while True:
+        print("\nOpciones:")
+        print("1. Añadir palabras al diccionario")
+        print("2. Traducir una frase")
+        print("3. Salir")
+        
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            # Añadir palabras al diccionario
+            entrada = input("Introduce las palabras en español e inglés separadas por comas (palabra:traducción): ")
+            pares = entrada.split(",")
+            for par in pares:
+                if ":" in par:
+                    espanol, ingles = par.split(":")
+                    diccionario[espanol.strip()] = ingles.strip()
+            print("Palabras añadidas al diccionario.")
+
+        elif opcion == "2":
+            # Traducir una frase
+            frase = input("Introduce una frase en español: ")
+            palabras = frase.split()
+            traduccion = []
+            
+            for palabra in palabras:
+                # Traducir palabra o dejar sin traducir si no está en el diccionario
+                traduccion.append(diccionario.get(palabra, palabra))
+                
+            print("Traducción:", ' '.join(traduccion))
+
+        elif opcion == "3":
+            # Salir
+            print("Saliendo del programa.")
+            break
+
+        else:
+            print("Opción no válida. Inténtalo de nuevo.")
+
+# Ejecutar el programa
+gestionar_diccionario()

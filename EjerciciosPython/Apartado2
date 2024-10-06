@@ -1,0 +1,18 @@
+""" 2 - Función división controlada, pedimos a y b, y realiza la división, y si da algún error (típico b
+vale 0) la función devuelve 0. (Hacer con un bloque try). """
+
+def division_controlada (a,b):
+    try: 
+        resultado = a / b
+    except ZeroDivisionError:
+        return 0
+    
+    return resultado
+
+# Se solicita el divisor y dividendo al usuario
+num1 = int (input("Introduce el divisor"))
+num2 = int (input("Introduce el dividendo"))
+
+resultado = division_controlada (num1, num2)
+
+print ("Resultado: " + str(resultado))

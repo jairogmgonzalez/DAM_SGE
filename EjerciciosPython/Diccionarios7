@@ -1,0 +1,74 @@
+"""7. Utilizando diccionarios un programa de “gestión de frutería” que muestre las siguientes 
+opciones de menú hasta que se decida finalizar:
+- Añadir un articulo a la frutería. Pedimos nombre y precio por kilo. Se guardan en un 
+diccionario.
+- Mostrar tienda (ver todos los artículos y precios).
+- Crear una cesta de la compra. La cesta de la compra es un diccionario. Eliminamos todos 
+los items de ese diccionario.
+- Añadir artículo a la cesta. Preguntamos por fruta y cantidad de kilos. En el diccionario se 
+guardan el artículo y el total (kilos por precio por kilo).
+- Calcular total de la cesta """
+
+def gestionar_fruteria():
+    fruteria = {}  # Diccionario para almacenar los artículos y precios
+    cesta = {}  # Diccionario para la cesta de la compra
+
+    while True:
+        print("\nOpciones:")
+        print("1. Añadir un artículo a la frutería")
+        print("2. Mostrar tienda")
+        print("3. Crear una cesta de la compra")
+        print("4. Añadir artículo a la cesta")
+        print("5. Calcular total de la cesta")
+        print("6. Salir")
+        
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            # Añadir un artículo
+            nombre = input("Introduce el nombre de la fruta: ")
+            precio = float(input("Introduce el precio por kilo: "))
+            fruteria[nombre] = precio
+            print(f"Artículo '{nombre}' añadido con precio {precio} por kilo.")
+
+        elif opcion == "2":
+            # Mostrar tienda
+            if fruteria:
+                print("\nArtículos disponibles en la frutería:")
+                for fruta, precio in fruteria.items():
+                    print(f"{fruta}: {precio} por kilo")
+            else:
+                print("La frutería está vacía.")
+
+        elif opcion == "3":
+            # Crear una cesta de la compra
+            cesta.clear()  # Limpiar la cesta
+            print("Cesta de la compra creada.")
+
+        elif opcion == "4":
+            # Añadir artículo a la cesta
+            fruta = input("Introduce el nombre de la fruta: ")
+            if fruta in fruteria:
+                kilos = float(input("Introduce la cantidad de kilos: "))
+                total = kilos * fruteria[fruta]
+                cesta[fruta] = total
+                print(f"Añadido {kilos} kilos de '{fruta}' a la cesta.")
+            else:
+                print("Ese artículo no está disponible en la frutería.")
+
+        elif opcion == "5":
+            # Calcular total de la cesta
+            total_cesta = sum(cesta.values())
+            print(f"El total de la cesta es: {total_cesta}")
+            cesta.clear()  # Limpiar la cesta después de calcular el total
+
+        elif opcion == "6":
+            # Salir
+            print("Saliendo del programa.")
+            break
+
+        else:
+            print("Opción no válida. Inténtalo de nuevo.")
+
+# Ejecutar el programa
+gestionar_fruteria()

@@ -1,0 +1,11 @@
+""" 5 - 5. Funcion que transforma una cadena en el reverso (“Hola Mundo” a “odnuM aloH”).
+Transforma la cadena en lista, utiliza el reverse y pasa la lista a cadena. """
+
+def cadena_reversa(cadena):
+    lista = [i for i in cadena] # Se convierte la cadena en lista de caracteres
+    lista.reverse() # Se invierte la lista
+    return ''.join(lista) # Se convierte la lista de vuelta a cadena
+
+# Ejemplo de uso:
+cadena = input("Escribe una cadena: ")
+print(cadena_reversa(cadena))

@@ -1,0 +1,29 @@
+""" 1 - Programa que pida un número hasta que el número introducido sea 0 o un número primo. Se
+dará el mensaje "El número 22 no es primo, repite." """
+
+def es_primo (num):
+    if num <= 1:
+        return False
+    
+    # Se verifica los divisores desde el 2 hasta el número actual 
+    for i in range(2,num):
+        if num % i == 0:
+            return False
+        
+    return True
+    
+# Se solicita un número al usuario
+num = int ((input) ("Introduce un número primo"))
+
+# Bucle hasta que se introduzca 0 o un número primo
+while num != 0 and not es_primo(num):
+    num = int (input(str(num) + " no es primo. Vuelve a introducir otro número"))
+
+# Mensaje final si es 0 o un número primo
+if num == 0:
+    print("Has introducido " + str(num) + ". Fin")
+else:
+    print(str(num) + " es primo. Fin")
+
+
+        

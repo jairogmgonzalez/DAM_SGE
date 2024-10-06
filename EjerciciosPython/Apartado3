@@ -1,0 +1,10 @@
+""" 3 - Funcion que a partir de una lista de cadenas cree una lista con las longitudes de las cadenas.
+Utiliza List Comprehension. """
+
+def longitud_cadenas (lista):
+    return [len(cadena) for cadena in lista] #List Comprehension
+
+cadenas = ["Sistemas", "Gestión", "Empresa", "Aplicaciones", "Web"]
+longitudes = longitud_cadenas(cadenas)
+
+print(longitudes)

@@ -1,0 +1,20 @@
+""" 6 - Genera una funcion que recibe 2 listas. Si son de longitud diferente generamos un error y si
+son de la misma longitud, utilizando map y funcion lambda, generamos una nueva lista con
+el mayor de las dos listas en cada posición (ej: para las listas [3,2,5] y [4,1,1] devuelve
+[4,2,5]."""
+
+def comparar_listas (lista1, lista2):
+    
+   if (len(lista1) != len(lista2)):
+       raise ValueError("Las listas no son de la misma longitud")
+   else:
+       return list (map(lambda x, y: max(x, y), lista1, lista2))
+
+# Se define las listas
+lista1 = [3, 2, 5]
+lista2 = [4, 1, 1]
+
+listaFinal = comparar_listas(lista1, lista2)
+print(listaFinal)
+ 
+ 
