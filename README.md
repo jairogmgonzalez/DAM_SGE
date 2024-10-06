@@ -1,1 +1,1 @@
-Sistemas de Gestión Empresarial - DAM - 24/25
+SISTEMAS DE GESTIÓN EMPRESARIAL - DAM - IES PADRE SUÁREZ - 24/25
